@@ -1,0 +1,33 @@
+# Конфиденциальные данные
+config.php
+includes/config.php
+*.env
+.env.local
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+*.log
+
+# Временные файлы
+/tmp/
+/cache/
+/sessions/
+
+# Резервные копии
+backup/
+*.backup
+*.sql
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ошибки PHP
+error_log
+
+# Загружаемые файлы
+/uploads/
+/media/
