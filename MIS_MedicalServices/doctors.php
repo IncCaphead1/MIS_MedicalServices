@@ -66,12 +66,12 @@ $db->close();
     </nav>
 
     <div class="container">
-        <h1>Управление врачами</h1>
+        <h1>👨‍⚕️ Управление врачами</h1>
         
         <div class="card">
             <div class="card-header">
-                <h3>👨‍⚕️ Список врачей</h3>
-                <a href="?action=create" class="btn btn-success">Добавить врача</a>
+                <h3>📋 Список врачей</h3>
+                <a href="doctors_create.php" class="btn btn-success">Добавить врача</a>
             </div>
             <div class="card-body">
                 <?php if (count($doctors) > 0): ?>
@@ -109,10 +109,9 @@ $db->close();
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <a href="?action=edit&id=<?php echo $doctor['id']; ?>" class="btn btn-primary btn-sm">Редактировать</a>
-                                    <a href="?action=view&id=<?php echo $doctor['id']; ?>" class="btn btn-secondary btn-sm">Просмотр</a>
-                                    <a href="?action=delete&id=<?php echo $doctor['id']; ?>" class="btn btn-danger btn-sm" 
-                                       onclick="return confirm('Вы уверены, что хотите удалить врача?')">Удалить</a>
+                                    <button class="btn btn-secondary btn-sm" disabled>Просмотр</button>
+                                    <button class="btn btn-primary btn-sm" disabled>Редактировать</button>
+                                    <button class="btn btn-danger btn-sm" disabled>Удалить</button>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -120,6 +119,9 @@ $db->close();
                     </table>
                 <?php else: ?>
                     <p style="text-align: center; color: #6c757d; padding: 20px;">Врачи не найдены</p>
+                    <div style="text-align: center;">
+                        <a href="doctors_create.php" class="btn btn-success">Добавить первого врача</a>
+                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -185,56 +187,35 @@ $db->close();
         </div>
     </div>
 
-    <script src="js/script.js"></script>
     <script>
-        // Горячие клавиши для doctors.php
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey || e.altKey || e.shiftKey) return;
-            
-            const key = e.key.toUpperCase();
-            
-            switch(key) {
-                case '1':
-                    e.preventDefault();
-                    window.location.href = 'dashboard.php';
-                    break;
-                case '2':
-                    e.preventDefault();
-                    window.location.href = 'patients.php';
-                    break;
-                case '3':
-                    e.preventDefault();
-                    window.location.href = 'doctors.php';
-                    break;
-                case '4':
-                    e.preventDefault();
-                    window.location.href = 'appointments.php';
-                    break;
-                case '5':
-                    e.preventDefault();
-                    window.location.href = 'services.php';
-                    break;
-                case 'N':
-                    e.preventDefault();
-                    window.location.href = '?action=create';
-                    break;
-                case 'L':
-                    e.preventDefault();
-                    window.location.href = 'logout.php';
-                    break;
-                case 'ESCAPE':
-                    e.preventDefault();
-                    window.location.href = 'dashboard.php';
-                    break;
-            }
-        });
-
         // Автофокус на поиске при загрузке
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.querySelector('input[name="last_name"]');
             if (searchInput) {
                 searchInput.focus();
             }
+        });
+    </script>
+
+    <script>
+        // Прокрутка вверх при загрузке страницы и переходе по ссылкам
+        document.addEventListener('DOMContentLoaded', function() {
+            // Прокрутка вверх при загрузке
+            window.scrollTo(0, 0);
+            
+            // Прокрутка вверх при клике на ссылки навигации
+            document.querySelectorAll('a[href*=".php"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    setTimeout(() => {
+                        window.scrollTo(0, 0);
+                    }, 100);
+                });
+            });
+        });
+
+        // Также прокрутка вверх при нажатии кнопки "Назад" в браузере
+        window.addEventListener('pageshow', function() {
+            window.scrollTo(0, 0);
         });
     </script>
 </body>

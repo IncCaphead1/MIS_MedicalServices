@@ -86,7 +86,7 @@ if ($_POST && isset($_POST['login'])) {
                 <strong>Сервер:</strong> <span class="ip-display"><?php echo SERVER_IP; ?></span>
             </div>
             
-            <?php if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= MAX_LOGIN_ATTEMPTS): ?>
+            <?php if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= 5): ?>
                 <div class="login-warning" style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 10px; margin: 15px 0; text-align: center;">
                     <strong>Внимание!</strong> Аккаунт временно заблокирован из-за множества неудачных попыток входа.
                 </div>
@@ -95,6 +95,7 @@ if ($_POST && isset($_POST['login'])) {
             <div class="login-footer" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #666;">
                 <p><strong>Тестовые доступы:</strong></p>
                 <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li><strong>Администратор:</strong> admin / admin123</li>
                     <li><strong>Пациент:</strong> ivanov_p / 3213asw</li>
                     <li><strong>Врач:</strong> dr_ivanova / gsgshfu45</li>
                 </ul>

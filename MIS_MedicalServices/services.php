@@ -205,7 +205,7 @@ $db->close();
             <div class="card-header">
                 <h3>📋 Каталог медицинских услуг</h3>
                 <?php if ($_SESSION['role'] !== 'Пациент'): ?>
-                    <a href="?action=create" class="btn btn-success">Добавить услугу</a>
+                    <a href="services_create.php" class="btn btn-success">Добавить услугу</a>
                 <?php endif; ?>
             </div>
             <div class="card-body">

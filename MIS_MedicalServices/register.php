@@ -83,7 +83,7 @@ if ($_POST && isset($_POST['register'])) {
         $db->getConnection()->begin_transaction();
         
         try {
-            // Создаем пользователя (только login и password_hash)
+            // Создаем пользователя
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
             
             $db->query(
